@@ -7,6 +7,9 @@ import artifactRoutes from "./routes/artifacts.route.js"
 import likes from "./routes/likes.routes.js";
 import comment from "./routes/comment.route.js";
 import cookieParser from "cookie-parser";
+// import webhookRoutes from "webhooks";
+// import testing from "../cron/testing.js";
+import webhookRoutes from "./webhook/webhook.js";
 
 const app = express();
 
@@ -26,7 +29,7 @@ app.get("/", (req, res) => {
     message: "CMS Backend is running"
   });
 });
-
+app.use("/webhooks",webhookRoutes);
 app.use("/auth",authRoutes);
 app.use("/artifacts", artifactRoutes);
 app.use("/likes", likes);
